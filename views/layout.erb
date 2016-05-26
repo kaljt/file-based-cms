@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+    <title>File-Based-CMS Project</title>
+    <link rel='stylesheet' href='/stylesheets/application.css'>
+  <body>
+    <% if session[:message] %>
+      <p class="message"><%= session.delete(:message) %></p>
+    <% end %>
+     <%= yield %>
+    </body>
+</html>

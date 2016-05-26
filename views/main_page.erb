@@ -1,0 +1,21 @@
+<ul>
+<% dir_list("data").each do |name| %>
+  <li>
+    <a href="<%=name%>"><%= name %></a>
+    <a href="<%=name%>/edit"><button>Edit</button></a>
+    <form class='delete' action="/delete" method='post'>
+    <input class='delete' name='file_to_delete' id='to-delete' type='hidden' value="<%=name%>">
+    <input class='delete' type='submit' value='Delete'>
+    </form>
+  </li>
+  <% end %>
+</ul>
+<p><a href='/new'>New Document</a></p>
+<% if !user_logged? %>
+<a href='/users/signin'><button>Sign In</button></a>
+<% else %>
+<em>Signed in as <%=display_user%>.</em>
+<form class='delete' action='/signout' method='post'>
+<button>Sign Out</button>
+</form>
+<% end %>
